@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR" ng-app="Delivare">
 <head>
+  <base href="/" />
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
@@ -8,17 +9,16 @@
     <title>Delivare</title>
 
     <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" type="text/css" href="./app/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="app/bootstrap/css/bootstrap.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" type="text/css" href="./app/dist/font-awesome-4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="app/dist/font-awesome-4.5.0/css/font-awesome.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" type="text/css" href="./app/dist/css/AdminLTE.min.css">
-    <link rel="stylesheet" type="text/css" href="./app/dist/css/main.css">
+    <link rel="stylesheet" type="text/css" href="app/dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
     page. However, you can choose any other skin. Make sure you
     apply the skin class to the body tag so the changes take effect.
     -->
-    <link rel="stylesheet" type="text/css" href="./app/dist/css/skins/skin-yellow-light.min.css">
+    <link rel="stylesheet" type="text/css" href="app/dist/css/skins/skin-yellow-light.min.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -51,19 +51,20 @@
         font-size: 2rem;
       }
     </style>
+    <base href="/" />
 </head>
 
 <body class="hold-transition skin-yellow-light sidebar-mini">
     <div class="wrapper">
 
         <header class="main-header" ng-controller="UsuarioController">
-            <a href="index.html#/" class="logo" >
+            <a href="#/" class="logo" >
                 <span class="logo-mini"><b>D</b> <i class="fa fa-check"></i></span>
-                <span class="logo-lg"><img src="./app/dist/img/logo-nav.png" height="50" ="100" alt=""></span>
+                <span class="logo-lg"><img src="app/dist/img/logo-nav.png" height="50" ="100" alt=""></span>
             </a>
 
             <nav class="navbar navbar-static-top" role="navigation">
-                <a href="javascript:;" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                     <span class="sr-only">Toggle navigation</span>
                 </a>
 
@@ -94,13 +95,13 @@
                         </li>
 
                         <li class="dropdown-toggle bg-red" ng-show="logado">
-                            <a href="index.html#/" data-toggle="dropdown" ng-click="deslogar()">
+                            <a href="/" data-toggle="dropdown" ng-click="deslogar()">
                                 <i class="fa fa-sign-out" aria-hidden="true"></i>
                                 <span class="hidden-xs">Sair</span>
                             </a>
                         </li>
 
-                        <li class="dropdown user user-menu" ng-show="!logado">
+                        <li class="dropdown user user-menu" ng-hide="logado">
                             <a href="javascript::;" class="dropdown-toggle bg-green" data-toggle="dropdown">
                                  <i class="fa fa-user" aria-hidden="true"></i>
                                  <span class="hidden-xs">Registre-se</span>
@@ -173,25 +174,25 @@
 
                         <li class="dropdown user user-menu bg-blue" ng-show="logado">
                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="./app/dist/img/avatar5.png" class="user-image" alt="User Image">
+                                <img src="app/dist/img/avatar5.png" class="user-image" alt="User Image">
                                 <span class="hidden-xs">{{usuario.nome}}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="user-header bg-blue">
-                                    <img src="./app/dist/img/avatar5.png" class="img-circle" alt="User Image">
+                                    <img src="app/dist/img/avatar5.png" class="img-circle" alt="User Image">
                                     <p>{{usuario.nome}}</p>
                                 </li>
                                 <li class="user-body">
                                     <div class="col-xs-12 text-center">
-                                        <a href="index.html#/perfil#historico"> <i class="fa fa-history"></i> Histórico de Compras</a>
+                                        <a href="perfil#historico"> <i class="fa fa-history"></i> Histórico de Compras</a>
                                     </div>
                                 </li>
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="index.html#/perfil#cadastro" class="btn btn-default btn-flat">Cadastro</a>
+                                        <a href="perfil#cadastro" class="btn btn-default btn-flat">Cadastro</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="index.html#/" ng-click="deslogar()" class="btn btn-default btn-flat">Sair</a>
+                                        <a ng-click="deslogar()" class="btn btn-default btn-flat">Sair</a>
                                     </div>
                                 </li>
                             </ul>
@@ -230,8 +231,14 @@
             </section>
         </aside><!-- end main-sidebar -->
 
-        <div class="content-wrapper ">
-            <section class="content-header proibido-perfil">
+        <div class="content-wrapper">
+            <section class="content-header">
+                <!-- <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-glass"></i> Adega</a></li>
+                    <li>Champagne e Espumantes</li>
+                    <li class="active">França</li>
+                </ol> -->
+
                 <div>
                     <form action="#" method="get" class="form-inline" style="margin: 0px;">
                         <div class="form-group">
@@ -263,7 +270,7 @@
                 </div>
             </section><!-- end content-header -->
 
-            <div ng-view></div>
+            <div class='content' data-ng-view></div>
         </div><!-- end content-wrapper -->
 
         <div class="modal" tabindex="-1" role="dialog" id="meuModal" ng-controller="mainController" ng-hide="logado">
@@ -300,47 +307,46 @@
         <strong>Copyright &copy; 2016 <a href="#">Delivare</a>.</strong> All rights reserved.
     </footer>
 
-    <script src="./app/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <script src="./app/bootstrap/js/bootstrap.min.js"></script>
-    <script src="./app/dist/js/app.min.js"></script>
+    <script src="/app/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="/app/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/app/dist/js/app.min.js"></script>
 
     <!-- Arquivos de Terceiros -->
-    <script src="./assets/js/vendor/angular.min.js"></script>
-    <script src="./assets/js/vendor/angular-route.min.js"></script>
-    <script src="./app/dist/angularjs-1.4.8/ngStorage.js"></script>
-    <script src="./assets/js/vendor/angular-locale_pt-br.js"></script>
+    <script src="/assets/js/vendor/angular.min.js"></script>
+    <script src="/assets/js/vendor/angular-route.min.js"></script>
+    <script src="/app/dist/angularjs-1.4.8/ngStorage.js"></script>
+    <script src="/assets/js/vendor/angular-locale_pt-br.js"></script>
 
     <!-- Modulos -->
-    <script src="./assets/js/app.js"></script>
+    <script src="/assets/js/app.js"></script>
 
     <!-- Controllers -->
-    <script src="./assets/js/controllers/mainController.js"></script>
-    <script src="./assets/js/controllers/produtosDetalhesCtrl.js"></script>
-    <script src="./assets/js/controllers/usuarioController.js"></script>
+    <script src="/assets/js/controllers/mainController.js"></script>
+    <script src="/assets/js/controllers/produtosDetalhesCtrl.js"></script>
+    <script src="/assets/js/controllers/usuarioController.js"></script>
 
     <!-- Configuração -->
-    <script src="./assets/js/config/config.js"></script>
+    <script src="/assets/js/config/config.js"></script>
 
     <!-- interceptors -->
-    <script src="./assets/js/config/interceptorConfig.js"></script>
-    <script src="./assets/js/interceptor/errorInterceptor.js"></script>
-    <script src="./assets/js/interceptor/loadingInterceptor.js"></script>
-    <script src="./assets/js/interceptor/auth-Interceptor.js"></script>
+    <script src="/assets/js/config/interceptorConfig.js"></script>
+    <script src="/assets/js/interceptor/errorInterceptor.js"></script>
+    <script src="/assets/js/interceptor/loadingInterceptor.js"></script>
 
     <!-- Serviços -->
-    <script src="./assets/js/services/produtos/produtosAPIService.js"></script>
-    <script src="./assets/js/services/categoria/categoriesAPIService.js"></script>
-    <script src="./assets/js/services/usuario/usuarioAPIService.js"></script>
-    <script src="./assets/js/services/usuario/carrinhoAPIService.js"></script>
+    <script src="/assets/js/services/produtos/produtosAPIService.js"></script>
+    <script src="/assets/js/services/categoria/categoriesAPIService.js"></script>
+    <script src="/assets/js/services/usuario/usuarioAPIService.js"></script>
+    <script src="/assets/js/services/usuario/carrinhoAPIService.js"></script>
 
     <!-- Servico - Value -->
-    <script src="./assets/js/value/configValue.js"></script>
+    <script src="/assets/js/value/configValue.js"></script>
 
     <!-- Diretivas -->
-    <script src="./assets/js/diretiva/rnStepper.js"></script>
+    <script src="/assets/js/diretiva/rnStepper.js"></script>
 
     <!-- Javascript Universal -->
-    <script src="./assets/js/main.js"></script>
+    <script src="/assets/js/main.js"></script>
 
     <script type="text/javascript">
     $(window).load(function () {

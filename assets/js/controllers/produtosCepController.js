@@ -1,4 +1,5 @@
 angular.module("Delivare").controller("produtosCepController", function(produtosAPI, $scope){
+$scope.logado = window.localStorage.logado;
   $scope.carregarProdutoPorCep = function(cep){
 
     if(cep != ""){

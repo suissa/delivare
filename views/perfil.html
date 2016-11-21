@@ -1,21 +1,21 @@
 <aside class="main-sidebar">
 
     <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
+    <section class="sidebar" >
         <div class="user-painel">
 
             <!-- Profile Image -->
             <div class="box box-primary no-border">
                 <div class="box-body box-profile">
                     <img class="profile-user-img img-responsive img-circle" src="./app/dist/img/avatar5.png" alt="User profile picture">
-                    <h3 class="profile-username text-center">{{Usuario.nome}}</h3>
+                    <h3 class="profile-username text-center">{{usuario.nome}}</h3>
 
                     <ul class="list-group list-group-unbordered">
                         <li class="list-group-item">
-                            <b>Listas de Compras</b> <a class="pull-right text-blue">{{ Usuario.produtos.length }}</a>
+                            <b>Listas de Compras</b> <a class="pull-right text-blue">{{ usuario.produtos.length }}</a>
                         </li>
                         <li class="list-group-item">
-                            <b>Total Comprado</b> <a class="pull-right text-blue">{{ Usuario.comprasTotal | currency:'R$ ':2 }}</a>
+                            <b>Total Comprado</b> <a class="pull-right text-blue">{{ usuario.comprasTotal | currency:'R$ ':2 }}</a>
                         </li>
                     </ul>
                     <a href="#" class="btn btn-primary btn-block" style="color: #fff;"><b>Trocar Senha</b></a>
@@ -33,18 +33,18 @@
                 <div class="box-body">
                     <strong><i class="fa fa-envelope-o margin-r-5"></i>  E-Mail</strong>
                     <p class="text-muted">
-                      {{ usuario.cliente.email }}
+                      {{usuario.email}}
                     </p>
                     <strong><i class="fa fa-phone margin-r-5"></i>  Telefone</strong>
                     <p class="text-muted">
-                        {{ usuario.cliente.teelefone }}
+                        {{usuario.celular}}
                     </p>
                     <strong><i class="fa fa-map-marker margin-r-5"></i> Endereço</strong>
 
-                    <!-- <p class="text-muted">{{ Usuario.endereco.completo }}
+                    <p class="text-muted">{{ Usuario.endereco.completo }}
                         <br> CEP: {{ Usuario.endereco.cep }} - {{ Usuario.endereco.bairro }}
                         <br> {{ Usuario.endereco.cidade }}/{{ Usuario.endereco.estado }}
-                    </p> -->
+                    </p>
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -57,7 +57,7 @@
     <!-- /.sidebar -->
 </aside>
 
-<div class="content">
+<div>
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
@@ -339,7 +339,8 @@
                                 <div class="form-group">
                                     <label for="inputName" class="col-sm-2 control-label">Nome</label>
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="inputName" placeholder="Nome">
+                                        <input type="text" class="form-control" id="inputName" placeholder="Nome">
+
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -361,38 +362,38 @@
 
                                     <label class="col-sm-2 control-label">Endereço</label>
                                     <div class="col-sm-3">
-                                        <input type="text" class="form-control" name="txtCEP" required ng-minlength="9" placeholder="CEP">
+                                        <input type="text" class="form-control" name="txtCEP" required ng-minlength="9" placeholder="CEP" ng-model="cep">
                                     </div>
 
-                                    <div class="col-sm-4">
-                                        <button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                    <!-- <div class="col-sm-4">
+                                        <button ng-click="buscarEndereco(cep)" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                                         </button>
                                         <span class="spinner"><i class="fa fa-refresh fa-spin"></i> Aguarde...</span>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-6">
-                                        <input type="text" class="form-control" name="txtLogradouro" placeholder="Logradouro" ng-model="pedido.cliente.logradouro" required>
+                                        <input type="text" class="form-control" name="txtLogradouro" placeholder="Logradouro" ng-model="pedido.cliente.logradouro" value="{{endereco.logradouro}}">
                                     </div>
                                     <div class="col-sm-2">
                                         <input type="number" class="form-control" name="txtNumero" placeholder="Nº" ng-model="pedido.cliente.numero" required>
                                     </div>
                                     <div class="col-sm-2">
-                                        <input type="text" class="form-control" name="txtComplemento" placeholder="Complemento" ng-model="pedido.cliente.complemento">
+                                        <input type="text" class="form-control" name="txtComplemento" placeholder="Complemento" ng-model="pedido.cliente.complemento" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
 
 
                                     <div class="col-sm-offset-2 col-sm-4">
-                                        <input type="text" class="form-control" name="txtBairro" placeholder="Bairro" ng-model="pedido.cliente.bairro" required>
+                                        <input type="text" class="form-control" name="txtBairro" placeholder="Bairro" ng-model="pedido.cliente.bairro" value="{{endereco.bairro}}">
                                     </div>
 
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" name="txtCidade" placeholder="Cidade" ng-model="pedido.cliente.cidade" required>
+                                        <input type="text" class="form-control" name="txtCidade" placeholder="Cidade" ng-model="pedido.cliente.cidade" value="{{endereco.cidade}}">
                                     </div>
                                     <div class="col-sm-2">
-                                        <input type="text" class="form-control" name="txtUF" placeholder="UF" ng-model="pedido.cliente.uf" required>
+                                        <input type="text" class="form-control" name="txtUF" placeholder="UF" ng-model="pedido.cliente.uf" value="{{endereco.uf}}">
                                     </div>
                                 </div>
                                 <div class="form-group">

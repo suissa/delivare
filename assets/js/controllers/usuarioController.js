@@ -1,5 +1,6 @@
-app.controller("UsuarioController", function($http, usuariosAPI, $scope, carrinhoDeCompras, $location, $localStorage){
+app.controller("UsuarioController", function($http, usuariosAPI, $scope, carrinhoDeCompras, $location, $localStorage, $rootScope){
 /* Parte de controller que cuida da parte de login e registros de usuário! */
+$scope.logado = window.localStorage.logado;
   $scope.cadastrar = function(Cadastro){
 
     usuariosAPI.postInserirUsuario(Cadastro)
@@ -10,46 +11,32 @@ app.controller("UsuarioController", function($http, usuariosAPI, $scope, carrinh
           console.log("config: ", config);
 
     }).error(function(data, status, header, config){
-          console.log("Dados: ", data);
-          console.log("Status: ", status);
-          console.log("headers: ", header);
-          console.log("config: ", config);
     })
   };
 
 $scope.entrar = function(Login){
-    usuariosAPI.postLogarUsuario(Login)
-        .success(function(data, status, headers, config){
-          var dados = $localStorage.$default({
-            login: data.login,
-            senha: data.senha,
-            logado: true,
-            nome: data.nome,
-            celular: data.cliente.celular,
-            cpf: data.cliente.cpf,
-            email: data.cliente.email
-          });
+    usuariosAPI.postLogarUsuario(Login).success(function(data){
+          const dados = $localStorage.$default({
+             nome: data.nome,
+             email: data.email,
+             celular: data.celular
+           });
 
-          $scope.usuario = true;
-          $scope.usuario = dados;
-          $location.path('/perfil');
-          console.log("Dados vindos de data: ", $scope.usuario);
-          console.log("Dados vindos de $localStorage: ", $localStorage);
-          console.log("Dados vindos de $localStorage: ", $localStorage.logado);
+          window.localStorage.setItem("logado", true);
+          console.log(data);
+          $scope.logado = window.localStorage.logado;
+          $rootScope.usuario = dados;
 
     }).error(function(data, status, header, config){
 
-          console.log("Dados: ", data);
-          console.log("Status: ", status);
-          console.log("headers: ", header);
-          console.log("config: ", config);
     })
   }
 
   $scope.deslogar = function(){
-
-    $scope.logado = false;
-    $location.path('/');
+    window.localStorage.clear();
+    $scope.logado = window.localStorage;
+    window.location.replace("http://localhost:8080/delivare/#/");
+    document.location.reload();
   }
 
 /* Parte de controller que cuida da parte de carrinho de compras! */
@@ -58,4 +45,11 @@ $scope.entrar = function(Login){
       //carrinhoDeCompras.adicionarProdutoNoCarrinho(produto);
   }
 
+/*Buscar o Endereço na pagina de cadastro do perfil*/
+$scope.buscarEndereco = function(cep){
+  $scope.mostrarAguarde = true;
+  usuariosAPI.getEnderecoCep(cep).success(function(data){
+    $scope.endereco = data;
+  });
+}
 });

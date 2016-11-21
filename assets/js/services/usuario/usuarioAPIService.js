@@ -34,11 +34,14 @@ angular.module("Delivare").factory('usuariosAPI', function($http, config){
 			return $http.post('http://backend.apps.delivare.com.br/api/usuarios/efetuarLogin', data, config);
 	};
 
-
+	var _getEnderecoCep = function(cep){
+		return $http.get("https://viacep.com.br/ws/"+cep+"/json/");
+	}
 
 
 	return {
 		postInserirUsuario: _postInserirUsuario,
-		postLogarUsuario: _postLogarUsuario
+		postLogarUsuario: _postLogarUsuario,
+		getEnderecoCep: _getEnderecoCep
 	}
 });

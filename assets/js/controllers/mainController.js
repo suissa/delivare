@@ -1,5 +1,5 @@
-app.controller('mainController', function($scope, $http, produtosAPI, categoriesAPI, $timeout) {
-
+app.controller('mainController', function($scope, $http, produtosAPI, categoriesAPI, $timeout, $localStorage) {
+$scope.logado = window.localStorage.logado;
     var carregarCategorias = function(){
         categoriesAPI.getCategories().success(function (data){
             $scope.categories = data;

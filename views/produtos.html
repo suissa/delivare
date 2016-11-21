@@ -1,13 +1,13 @@
 
 <div class="row">
-    <div class="col-md-4" ng-repeat="pesquisado in produto">
+    <div class="col-md-4" ng-repeat="ProdutoPesquisado in produto">
         <div class="box box-widget widget-user-2">
             <div class="widget-user-header">
                 <div class="widget-user-image">
                     <img ng-src="http://static.delivare.com.br/{{pesquisado.produto.urlImagem}}" class="img-responsive" alt="Produto">
                 </div>
-                <h4 class="widget-user-desc">{{pesquisado.produto.titulo}}</h4>
-                <p class="">{{pesquisado.produto.descricao}}</p>
+                <h4 class="widget-user-desc">{{ProdutoPesquisado.produto.titulo}}</h4>
+                <p class="">{{ProdutoPesquisado.produto.descricao}}</p>
             </div>
             <div class="box-footer no-padding">
               <table class="table table-condensed table-hover no-margin" ng-controller="UsuarioController">
@@ -18,7 +18,7 @@
                       <span style="display: block; margin-bottom:-8px;">
                           {{preco.estabelecimento.nome}}
                       </span>
-                      <small>{{preco.estabelecimento.localizacao}}
+                      <small>{{preco.estabelecimento.nome}}
                       <a href="#" data-toggle="tooltip" data-placement="bottom" data-original-title="Ver Avaliações">
                         <i class="fa fa-star text-yellow" ng-repeat="n in range(1,preco.estabelecimento.avaliacao%1)"></i><i class="fa fa-star-half-o text-yellow" ng-repeat="n in range(0.5,preco.estabelecimento.avaliacao%1)"></i> </a>
                       </small>

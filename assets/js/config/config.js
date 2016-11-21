@@ -17,11 +17,6 @@ angular.module("Delivare").config(function($routeProvider, $locationProvider) {
 
     $routeProvider.when("/perfil", {
         templateUrl : "./views/perfil.html",
-        controller: "UsuarioController"
-    });
-
-    $routeProvider.when("/perfil#cadastro", {
-        templateUrl : "./views/perfil.html",
-        controller: "UsuarioController"
+        controller: "UsuarioController",
     });
 });
