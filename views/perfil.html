@@ -1,0 +1,417 @@
+<aside class="main-sidebar">
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <div class="user-painel">
+
+            <!-- Profile Image -->
+            <div class="box box-primary no-border">
+                <div class="box-body box-profile">
+                    <img class="profile-user-img img-responsive img-circle" src="./app/dist/img/avatar5.png" alt="User profile picture">
+                    <h3 class="profile-username text-center">{{Usuario.nome}}</h3>
+
+                    <ul class="list-group list-group-unbordered">
+                        <li class="list-group-item">
+                            <b>Listas de Compras</b> <a class="pull-right text-blue">{{ Usuario.produtos.length }}</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Total Comprado</b> <a class="pull-right text-blue">{{ Usuario.comprasTotal | currency:'R$ ':2 }}</a>
+                        </li>
+                    </ul>
+                    <a href="#" class="btn btn-primary btn-block" style="color: #fff;"><b>Trocar Senha</b></a>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+
+            <!-- About Me Box -->
+            <div class="box box-primary no-border">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><strong><i class="fa fa-book margin-r-5"></i>Meus Dados</strong></h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <strong><i class="fa fa-envelope-o margin-r-5"></i>  E-Mail</strong>
+                    <p class="text-muted">
+                      {{ usuario.cliente.email }}
+                    </p>
+                    <strong><i class="fa fa-phone margin-r-5"></i>  Telefone</strong>
+                    <p class="text-muted">
+                        {{ usuario.cliente.teelefone }}
+                    </p>
+                    <strong><i class="fa fa-map-marker margin-r-5"></i> Endereço</strong>
+
+                    <!-- <p class="text-muted">{{ Usuario.endereco.completo }}
+                        <br> CEP: {{ Usuario.endereco.cep }} - {{ Usuario.endereco.bairro }}
+                        <br> {{ Usuario.endereco.cidade }}/{{ Usuario.endereco.estado }}
+                    </p> -->
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+
+
+    </section>
+    <!-- /.sidebar -->
+</aside>
+
+<div class="content">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Meu Cadastro
+          </h1>
+
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="./index.html#/perfil#historico" data-toggle="tab">Histórico de Compras</a>
+                        </li>
+                        <li><a href="./index.html#/perfil#cadastro" data-toggle="tab">Cadastro</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="active tab-pane" id="historico">
+                            <!-- The timeline -->
+                            <ul class="timeline timeline-inverse">
+                                <!-- timeline time label -->
+                                <li class="time-label">
+                                    <span class="bg-green"> 10 Jan. 2016 </span>
+                                </li>
+                                <!-- /.timeline-label -->
+                                <!-- timeline item -->
+                                <li>
+                                    <i class="fa fa-shopping-cart bg-aqua"></i>
+                                    <div class="timeline-item">
+                                        <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+                                        <h3 class="timeline-header"><a>Total das Compras {{ Usuario.comprasTotal | currency:'R$ ':2 }}</a></h3>
+
+                                        <div class="timeline-body">
+                                            <div class="box">
+                                                <div class="box-header">
+                                                    <h3 class="box-title">Giassi Campinas</h3>
+                                                </div>
+                                                <!-- /.box-header -->
+                                                <div class="box-body">
+                                                    <table class="table table-bordered table-condensed">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th style="width: 10px">#</th>
+                                                                <th>Produto</th>
+                                                                <th class="text-right">Valor Un.</th>
+                                                                <th class="text-center">Quantidade</th>
+                                                                <th class="text-right">Valor Total</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>1.</td>
+                                                                <td>Espumante</td>
+                                                                <td class="text-right">
+                                                                    R$ 130,00
+                                                                </td>
+                                                                <td class="text-center">2</td>
+                                                                <td class="text-right">R$ 260,00</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2.</td>
+                                                                <td>Biscoito</td>
+                                                                <td class="text-right">
+                                                                    R$ 1,40
+                                                                </td>
+                                                                <td class="text-center">4</td>
+                                                                <td class="text-right">R$ 5,60</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>3.</td>
+                                                                <td>Leite</td>
+                                                                <td class="text-right">
+                                                                    R$ 2,30
+                                                                </td>
+                                                                <td class="text-center">12</td>
+                                                                <td class="text-right">R$ 27,60</td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <!-- /.box-body -->
+                                                <div class="box-footer clearfix">
+                                                    <span class="pull-right"><strong>Total R$ 293,20</strong></span>
+                                                </div>
+                                            </div>
+                                            <div class="box">
+                                                <div class="box-header">
+                                                    <h3 class="box-title">Angeloni Centro</h3>
+                                                </div>
+                                                <!-- /.box-header -->
+                                                <div class="box-body">
+                                                    <table class="table table-bordered table-condensed">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th style="width: 10px">#</th>
+                                                                <th>Produto</th>
+                                                                <th class="text-right">Valor Un.</th>
+                                                                <th class="text-center">Quantidade</th>
+                                                                <th class="text-right">Valor Total</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>1.</td>
+                                                                <td>Espumante</td>
+                                                                <td class="text-right">
+                                                                    R$ 130,00
+                                                                </td>
+                                                                <td class="text-center">2</td>
+                                                                <td class="text-right">R$ 260,00</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2.</td>
+                                                                <td>Biscoito</td>
+                                                                <td class="text-right">
+                                                                    R$ 1,40
+                                                                </td>
+                                                                <td class="text-center">4</td>
+                                                                <td class="text-right">R$ 5,60</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>3.</td>
+                                                                <td>Leite</td>
+                                                                <td class="text-right">
+                                                                    R$ 2,30
+                                                                </td>
+                                                                <td class="text-center">12</td>
+                                                                <td class="text-right">R$ 27,60</td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <!-- /.box-body -->
+                                                <div class="box-footer clearfix">
+                                                    <span class="pull-right"><strong>Total R$ 293,20</strong></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <!-- END timeline item -->
+                                <!-- timeline time label -->
+                                <li class="time-label">
+                                    <span class="bg-green">
+                          5 Jan. 2016
+                        </span>
+                                </li>
+                                <!-- /.timeline-label -->
+                                <!-- timeline item -->
+                                <li>
+                                    <i class="fa fa-shopping-cart bg-aqua"></i>
+                                    <div class="timeline-item">
+                                        <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+                                        <h3 class="timeline-header"><a>Total das Compras R$ 1500,00</a></h3>
+                                        <div class="timeline-body">
+                                            <div class="box">
+                                                <div class="box-header">
+                                                    <h3 class="box-title">Giassi Campinas</h3>
+                                                </div>
+                                                <!-- /.box-header -->
+                                                <div class="box-body">
+                                                    <table class="table table-bordered table-condensed">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th style="width: 10px">#</th>
+                                                                <th>Produto</th>
+                                                                <th class="text-right">Valor Un.</th>
+                                                                <th class="text-center">Quantidade</th>
+                                                                <th class="text-right">Valor Total</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>1.</td>
+                                                                <td>Espumante</td>
+                                                                <td class="text-right">
+                                                                    R$ 130,00
+                                                                </td>
+                                                                <td class="text-center">2</td>
+                                                                <td class="text-right">R$ 260,00</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2.</td>
+                                                                <td>Biscoito</td>
+                                                                <td class="text-right">
+                                                                    R$ 1,40
+                                                                </td>
+                                                                <td class="text-center">4</td>
+                                                                <td class="text-right">R$ 5,60</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>3.</td>
+                                                                <td>Leite</td>
+                                                                <td class="text-right">
+                                                                    R$ 2,30
+                                                                </td>
+                                                                <td class="text-center">12</td>
+                                                                <td class="text-right">R$ 27,60</td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <!-- /.box-body -->
+                                                <div class="box-footer clearfix">
+                                                    <span class="pull-right"><strong>Total R$ 293,20</strong></span>
+                                                </div>
+                                            </div>
+                                            <div class="box">
+                                                <div class="box-header">
+                                                    <h3 class="box-title">Angeloni Centro</h3>
+                                                </div>
+                                                <!-- /.box-header -->
+                                                <div class="box-body">
+                                                    <table class="table table-bordered table-condensed">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th style="width: 10px">#</th>
+                                                                <th>Produto</th>
+                                                                <th class="text-right">Valor Un.</th>
+                                                                <th class="text-center">Quantidade</th>
+                                                                <th class="text-right">Valor Total</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>1.</td>
+                                                                <td>Espumante</td>
+                                                                <td class="text-right">
+                                                                    R$ 130,00
+                                                                </td>
+                                                                <td class="text-center">2</td>
+                                                                <td class="text-right">R$ 260,00</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2.</td>
+                                                                <td>Biscoito</td>
+                                                                <td class="text-right">
+                                                                    R$ 1,40
+                                                                </td>
+                                                                <td class="text-center">4</td>
+                                                                <td class="text-right">R$ 5,60</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>3.</td>
+                                                                <td>Leite</td>
+                                                                <td class="text-right">
+                                                                    R$ 2,30
+                                                                </td>
+                                                                <td class="text-center">12</td>
+                                                                <td class="text-right">R$ 27,60</td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <!-- /.box-body -->
+                                                <div class="box-footer clearfix">
+                                                    <span class="pull-right"><strong>Total R$ 293,20</strong></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <!-- END timeline item -->
+
+
+
+                                <li>
+                                    <i class="fa fa-clock-o bg-gray"></i>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.tab-pane -->
+
+                        <div class="tab-pane" id="cadastro">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">Nome</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="inputName" placeholder="Nome">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">Telefones</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="inputName" placeholder="Celular">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="inputName" placeholder="Residencial">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+
+                                    <label class="col-sm-2 control-label">Endereço</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="txtCEP" required ng-minlength="9" placeholder="CEP">
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                        </button>
+                                        <span class="spinner"><i class="fa fa-refresh fa-spin"></i> Aguarde...</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-6">
+                                        <input type="text" class="form-control" name="txtLogradouro" placeholder="Logradouro" ng-model="pedido.cliente.logradouro" required>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" name="txtNumero" placeholder="Nº" ng-model="pedido.cliente.numero" required>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" name="txtComplemento" placeholder="Complemento" ng-model="pedido.cliente.complemento">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+
+
+                                    <div class="col-sm-offset-2 col-sm-4">
+                                        <input type="text" class="form-control" name="txtBairro" placeholder="Bairro" ng-model="pedido.cliente.bairro" required>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="txtCidade" placeholder="Cidade" ng-model="pedido.cliente.cidade" required>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" name="txtUF" placeholder="UF" ng-model="pedido.cliente.uf" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" class="btn btn-primary">Salvar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.tab-pane -->
+                    </div>
+                    <!-- /.tab-content -->
+                </div>
+                <!-- /.nav-tabs-custom -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+    </section>
+    <!-- /.content -->
+</div>

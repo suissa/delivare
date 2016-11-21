@@ -1,0 +1,37 @@
+{
+   "id":1,
+   "logradouro":"Rua Madre Maria Vilac",
+   "numero":"1230",
+   "complemento":null,
+   "cep":"88054001",
+   "bairro":{
+      "id":1,
+      "nome":"Canasvieiras",
+      "municipio":{
+         "id":1,
+         "nome":"Florianópolis",
+         "estado":{
+            "id":1,
+            "nome":"Santa Catarina",
+            "sigla":"SC",
+            "pais":{
+               "id":1,
+               "nome":"Brasil"
+            }
+         }
+      }
+   },
+   "municipio":{
+      "id":1,
+      "nome":"Florianópolis",
+      "estado":{
+         "id":1,
+         "nome":"Santa Catarina",
+         "sigla":"SC",
+         "pais":{
+            "id":1,
+            "nome":"Brasil"
+         }
+      }
+   }
+}

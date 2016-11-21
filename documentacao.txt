@@ -1,0 +1,172 @@
+Documentação EndPoints BackEnd Delivare
+
+
+Buscar Produtos Com Preço por Gênero:
+Descrição: Retorna os produtos do gênero passado com os preços agrupados por estabelecimento
+URL: http://backend.apps.delivare.com.br/api/produtos/consultarPrecos/{generoId}
+HTTP Method: GET
+Json Produzido: Precos-FocoProduto.json
+
+Consultar Produtos Por Gênero:
+Descrição: Retorna todos os produtos cadastrados que correspondam ao gênero passado
+URL: http://backend.apps.delivare.com.br/api/produtos/consultarProdutos/{generoId}
+HTTP Method: GET
+Json Produzido: Produtos.json
+
+Consultar Produtos Por Descrição:
+Descrição: Retorna todos os produtos cadastrados que correspondam a descrição passada
+URL:http://backend.apps.delivare.com.br/api/produtos/consultarProdutosPorDescricao/{descricao}
+HTTP Method: GET
+Json Produzido: Produtos.json
+
+Consultar Produtos:
+Descrição: Retorna todos os produtos cadastrados
+URL: http://backend.apps.delivare.com.br/api/produtos/consultarProdutos
+HTTP Method: GET
+Json Produzido: Produtos.json
+
+Inserir Produtos:
+Descrição: Insere o produto passado na Request
+URL: http://backend.apps.delivare.com.br/api/produtos/inserirProduto
+HTTP Method: POST
+Json Consumido: Produto_Inserir_Atualizar.json
+
+Editar Produtos:
+Descrição: Atualiza o produto passado na Request
+URL: http://backend.apps.delivare.com.br/api/produtos/editarProduto
+HTTP Method: PUT
+Json de Retorno: Produto_Inserir_Atualizar.json
+
+Excluir Produtos:
+Descrição: Exclui o produto correspondente ao código passado
+URL: http://backend.apps.delivare.com.br/api/produtos/editarProduto/{produtoId}
+HTTP Method: DELETE
+Obs.: Ainda não implementado
+
+Consultar Marcas:
+Descrição: Retorna todas as marcas cadastradas
+URL: http://backend.apps.delivare.com.br/api/marcas/consultarMarcas
+HTTP Method: GET
+Json Produzido: Marcas.json
+
+Consultar Marcas Por Descrição:
+Descrição: Retorna todas as marcas que correspondam a descrição passada
+URL:http://backend.apps.delivare.com.br/api/marcas/consultarMarcaPorDescricao/{descricao}
+HTTP Method: GET
+Json Produzido: Marcas.json
+
+Inserir Marcas:
+Descrição: Insere a marca passada na Request
+URL: http://backend.apps.delivare.com.br/api/marcas/salvarMarca
+HTTP Method: POST
+Json Consumido: Marca_Inserir_Atualizar.json
+
+Editar Marcas:
+Descrição: Atualiza a marca passada na Request
+URL: http://backend.apps.delivare.com.br/api/marcas/editarMarca
+HTTP Method: PUT
+Json Consumido: Marca_Inserir_Atualizar.json
+
+Excluir Marcas:
+Descrição: Exclui a marca correspondente ao código passado
+URL: http://backend.apps.delivare.com.br/api/marcas/excluirMarca/{marcaId}
+HTTP Method: DELETE
+
+Consultar Gêneros:
+Descrição: Retornar todos os gêneros cadastrados
+URL: http://backend.apps.delivare.com.br/api/generos/consultarGeneros
+HTTP Method: GET
+Json Produzido: Generos.json
+
+Consultar Gêneros Pai:
+Descrição: Retorna todos os gêneros/categorias que possuam um sub-gênero
+URL: http://backend.apps.delivare.com.br/api/generos/consultarGenerosPai
+HTTP Method: GET
+Json Produzido: GenerosPai.json
+
+Consultar Gêneros Por Descrição:
+Descrição: Retorna todos os gêneros cadastrados que correspondam a descrição passada
+URL:http://backend.apps.delivare.com.br/api/produtos/consultarGeneroPorDescricao/{descricao}
+HTTP Method: GET
+Json Produzido: Genero_Inserir_Atualizar.json
+
+Inserir gêneros:
+Descrição: Insere o gênero passado na Request
+URL: http://backend.apps.delivare.com.br/api/generos/inserirGenero
+HTTP Method: POST
+Json Consumido: Genero_Inserir_Atualizar.json
+
+
+
+
+
+Editar gêneros:
+Descrição: Atualiza o gênero passado na Request
+URL: http://backend.apps.delivare.com.br/api/generos/editarGenero
+HTTP Method: PUT
+Json Consumido: Genero_Inserir_Atualizar.json
+
+Excluir gêneros:
+Descrição: Exclui o gênero correspondente ao código passado
+URL: http://backend.apps.delivare.com.br/api/generos/excluirGenero/{generoId}
+HTTP Method: DELETE
+Obs.: Ainda não implementado
+
+Consultar Estabelecimentos:
+Descrição: Retorna todos os estabelecimentos cadastrados
+URL: http://backend.apps.delivare.com.br/api/estabelecimentos/consultarEstabelecimentos
+HTTP Method: GET
+Json Produzido: Estabelecimentos.json
+
+Inserir Estabelecimentos:
+Descrição: Insere o Estabelecimento passado na Request
+URL: http://backend.apps.delivare.com.br/api/estabelecimentos/salvarEstabelecimento
+HTTP Method: POST
+Json Consumido: Estabelecimento_Inserir_Atualizar.json
+
+Editar Estabelecimentos:
+Descrição: Atualiza o estabelecimento passado na Request
+URL: http://backend.apps.delivare.com.br/api/estabelecimentos/editarEstabeleciment
+HTTP Method: PUT
+Json Consumido: Estabelecimento_Inserir_Atualizar.json
+
+Excluir Estabelecimentos:
+Descrição: Exclui o estabelecimento correspondente ao código passado
+URL:http://backend.apps.delivare.com.br/api/estabelecimentos/excluirEstabelecimento/{ estabelecimentoId}
+HTTP Method: DELETE
+
+Consultar Lista Compra do Usuário:
+Descrição: Carrega as listas de compra do usuário logado
+URL: http://backend.apps.delivare.com.br/api/listas/consultarLista/{usuarioId}
+HTTP Method: GET
+Json Consumido: ListasDeComprasPorUsuario.json
+
+Salvar Lista Compra Atual:
+Descrição: Salva a lista de compras do storage do usuário para o sistema
+URL: http://backend.apps.delivare.com.br/api/listas/salvarLista
+HTTP Method: POST
+Json Consumido: ListaCompraUsuario_Inserir_Atualizar.json
+
+
+
+
+
+Editar Lista Compra:
+Descrição: Atualiza a lista de compras
+URL: http://backend.apps.delivare.com.br/api/listas/editarLista
+HTTP Method: PUT
+Json Consumido: ListaCompraUsuario_Inserir_Atualizar.json
+Obs.: Implementado mas nunca utilizado
+
+Registrar Interessado :
+Descrição: Cadastra os interessados em receber novidades
+URL: http://backend.apps.delivare.com.br/api/interessados/registrarInteressado
+HTTP Method: POST
+Json Consumido: Interessado.json
+
+Efetuar Login:
+Descrição: Efetua o login do usuário no sistema
+URL: http://backend.apps.delivare.com.br/api/usuarios/efetuarLogin
+HTTP Method: POST
+Json Consumido: Usuario.json
+Obs.: O campo login do usuário é o email

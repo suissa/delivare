@@ -1,0 +1,54 @@
+{
+  "id": 1,
+  "nome": "Leonardo",
+  "login": "leonardo@delivare.com.br",
+  "senha": "123",
+  "token": "4425afdb-2eae-46b7-b70d-42b9f1a019f3",
+  "cliente": {
+    "id": 1,
+    "nome": "Leonardo",
+    "cpf": "11111111111",
+    "email": "leonardo@delivare.com.br",
+    "telefone": "",
+    "celular": "",
+    "enderecos": [
+      {
+        "id": 1,
+        "logradouro": "Rua Madre Maria Vilac",
+        "numero": "1230",
+        "complemento": null,
+        "cep": "88054001",
+        "bairro": {
+          "id": 1,
+          "nome": "Canasvieiras",
+          "municipio": {
+            "id": 1,
+            "nome": "Florianópolis",
+            "estado": {
+              "id": 1,
+              "nome": "Santa Catarina",
+              "sigla": "SC",
+              "pais": {
+                "id": 1,
+                "nome": "Brasil"
+              }
+            }
+          }
+        },
+        "municipio": {
+          "id": 1,
+          "nome": "Florianópolis",
+          "estado": {
+            "id": 1,
+            "nome": "Santa Catarina",
+            "sigla": "SC",
+            "pais": {
+              "id": 1,
+              "nome": "Brasil"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

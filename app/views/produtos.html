@@ -1,0 +1,126 @@
+
+<aside class="main-sidebar">
+
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+    <!-- search form (Optional) -->
+    <form action="#" method="get" class="sidebar-form">
+      <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="Pesquisar" ng-model="nome">
+        <span class="input-group-btn">
+          <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+        </span>
+      </div>
+    </form>
+    <!-- /.search form -->
+
+    <!-- Sidebar Menu -->
+    <ul class="sidebar-menu">
+      <!-- Optionally, you can add icons to the links -->
+      <li class="treeview" data-ng-repeat="item in menu">
+        <a data-ng-href="{{item.url}}">
+          <i class="{{item.icone}}"></i> 
+          <span>{{item.descricao}}</span>
+          <i class="fa fa-angle-left pull-right" ng-if="item.filhos.length > 0"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li data-ng-repeat="subitem in item.filhos">
+            <a href="#">
+              <i class="{{subitem.icone}}"></i> 
+              <span data-ng-click="getProdutosPeloGenero(subitem.id)">{{subitem.descricao}} </span>
+              <i class="fa fa-angle-left pull-right" data-ng-if="subitem.submenu.length"></i>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <!-- /.sidebar-menu -->
+  </section>
+  <!-- /.sidebar -->
+</aside>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#"><i class="fa fa-glass"></i> Adega</a>
+        </li>
+        <li>Champagne e Espumantes</li>
+        <li class="active">França</li>
+    </ol>
+      <div>
+        <form action="#" method="get" class="form-inline" style="margin: 0px;">
+          <div class="form-group">
+            <select id="selectbasic" name="selectbasic" class="form-control input-sm" data-ng-change="order('menor_preco')" data-ng-model='ordenacaoProdutos'>
+              <option selected>Ordenar...</option>
+              <option value="menor_preco">Menor Preço</option>
+              <option value="maior_preco" data-ng-click="order('maior_preco')">Maior Preço</option>
+            </select>
+            <select id="selectbasic" name="selectbasic" class="form-control input-sm">
+              <option value="1">Pagamento...</option>
+              <option value="2">Dinheiro</option>
+              <option value="3">Cartão</option>
+            </select>
+            <label class="checkbox-inline">
+              <input type="checkbox" name="opcaoEntrega">Drive Thru
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" name="opcaoEntrega">Entrega Rápida
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" name="opcaoEntrega">Entrega Agendada
+            </label>
+          </div>
+        </form>
+      </div>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <!-- Your Page Content Here -->
+    <div class="row">
+      <div class="col-md-4" ng-repeat="produto in produtos.produtos">
+          <!-- Widget: user widget style 1 -->
+        <div class="box box-widget widget-user-2">
+          <!-- Add the bg color to the header using any of the bg-* classes -->
+          <div class="widget-user-header" style="height: 100px;">
+            <div class="widget-user-image">
+              <img class="img-responsive" data-ng-src="app/dist/img/{{produto.urlImagem}}" alt="Produto">
+            </div>
+            <!-- /.widget-user-image -->
+            <h6 class="widget-user-desc">{{produto.descricao}}</h6>
+          </div>
+          <div class="box-footer no-padding">
+            <table class="table table-condensed table-hover no-margin">
+              <tbody>
+                <tr ng-repeat="precos in produto.precos | orderBy:orderByPriceFunction">
+                  <td>
+                    <span class="pull-right text-blue" ng-show="precos.estabelecimento.quantidade > 0" data-toggle="tooltip" data-placement="top" data-original-title="Item já incluso no carrinho de compras"><i class="fa fa-cart-plus" style="positon: relative; top:-50px; font-size: 200%;"></i></span>
+                    <span style="display: block; margin-bottom:-8px;">
+                        {{precos.estabelecimento.nome}}
+                    </span>
+                    <small>{{precos.estabelecimento.localizacao}}
+                      <a href="#" data-toggle="tooltip" data-placement="bottom" data-original-title="Ver Avaliações">
+                        <i class="fa fa-star text-yellow" ng-repeat="n in range(1,precos.estabelecimento.avaliacao)"></i><i class="fa fa-star-half-o text-yellow" ng-repeat="n in range(0.5,precos.estabelecimento.avaliacao%1)"></i> </a>
+                        <i class="fa">&nbsp</i>
+                    </small>
+                  </td>
+                  <td class="text-center" style="width: 20%; vertical-align: middle; padding:1px;">
+                    <span class="badge bg-yellow" ng-class="{'bg-green': precos.melhorPreco}">{{precos.preco | currency:"R$ " | ajeitaMoeda}} </span>
+                  </td>
+                  <td style="width: 25%; vertical-align: middle; padding: 0px;">
+                    <span counter value="precos.estabelecimento.quantidade" min="0" max="99" step="1" editable></span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+        <!-- /.widget-user -->
+      </div>
+    </div>
+
+  </section>
+  <!-- /.content -->
+</div>
