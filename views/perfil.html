@@ -8,7 +8,7 @@
             <div class="box box-primary no-border">
                 <div class="box-body box-profile">
                     <img class="profile-user-img img-responsive img-circle" src="./app/dist/img/avatar5.png" alt="User profile picture">
-                    <h3 class="profile-username text-center">{{usuario.nome}}</h3>
+                    <h3 class="profile-username text-center">{{perfil.nome}}</h3>
 
                     <ul class="list-group list-group-unbordered">
                         <li class="list-group-item">
@@ -33,11 +33,11 @@
                 <div class="box-body">
                     <strong><i class="fa fa-envelope-o margin-r-5"></i>  E-Mail</strong>
                     <p class="text-muted">
-                      {{usuario.email}}
+                      {{perfil.login}}
                     </p>
                     <strong><i class="fa fa-phone margin-r-5"></i>  Telefone</strong>
                     <p class="text-muted">
-                        {{usuario.celular}}
+                        {{perfil.cliente.celular}}
                     </p>
                     <strong><i class="fa fa-map-marker margin-r-5"></i> Endereço</strong>
 
@@ -78,6 +78,8 @@
                         </li>
                         <li><a href="./index.html#/perfil#cadastro" data-toggle="tab">Cadastro</a>
                         </li>
+                        <li><a href="./index.html#/perfil#enderecos" data-toggle="tab">Endereços Para Entrega</a>
+                        </li>
                     </ul>
                     <div class="tab-content">
                         <div class="active tab-pane" id="historico">
@@ -102,7 +104,7 @@
                                                 </div>
                                                 <!-- /.box-header -->
                                                 <div class="box-body">
-                                                    <table class="table table-bordered table-condensed">
+                                                    <table class="table table-bordered table-condensed table-striped">
                                                         <tbody>
                                                             <tr>
                                                                 <th style="width: 10px">#</th>
@@ -149,11 +151,14 @@
                                             </div>
                                             <div class="box">
                                                 <div class="box-header">
-                                                    <h3 class="box-title">Angeloni Centro</h3>
+                                                    <div class="grupo-PedidoValor">
+                                                      <span>Pedido:#123541</span><br>
+                                                      <span>Total R$ 293,20</span>
+                                                    </div>
                                                 </div>
                                                 <!-- /.box-header -->
                                                 <div class="box-body">
-                                                    <table class="table table-bordered table-condensed">
+                                                    <table class="table table-bordered table-condensed table-striped">
                                                         <tbody>
                                                             <tr>
                                                                 <th style="width: 10px">#</th>
@@ -193,10 +198,21 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                <!-- /.box-body -->
                                                 <div class="box-footer clearfix">
-                                                    <span class="pull-right"><strong>Total R$ 293,20</strong></span>
+                                                  <div class="quest ratestar">
+                                                    Avaliação da compra:
+                                                    <div class="container-avaliacao" data-element="#quest2"></div>
+                                                    <select id="quest2" name="quest2">
+                                                        <option value="1">Ruim</option>
+                                                        <option value="2">Ok</option>
+                                                        <option value="3">Bom</option>
+                                                        <option value="4">Quase Ótimo</option>
+                                                        <option value="5">Ótimo</option>
+                                                    </select>
+                                                  </div>
+                                                    <textarea name="name" rows="8" class='textarea-comentario'></textarea>
                                                 </div>
+                                                <!-- /.box-body -->
                                             </div>
                                         </div>
 
@@ -204,11 +220,11 @@
                                 </li>
                                 <!-- END timeline item -->
                                 <!-- timeline time label -->
-                                <li class="time-label">
+                                <!-- <li class="time-label">
                                     <span class="bg-green">
                           5 Jan. 2016
                         </span>
-                                </li>
+                                </li> -->
                                 <!-- /.timeline-label -->
                                 <!-- timeline item -->
                                 <li>
@@ -223,7 +239,7 @@
                                                 </div>
                                                 <!-- /.box-header -->
                                                 <div class="box-body">
-                                                    <table class="table table-bordered table-condensed">
+                                                    <table class="table table-bordered table-condensed table-striped">
                                                         <tbody>
                                                             <tr>
                                                                 <th style="width: 10px">#</th>
@@ -274,7 +290,7 @@
                                                 </div>
                                                 <!-- /.box-header -->
                                                 <div class="box-body">
-                                                    <table class="table table-bordered table-condensed">
+                                                    <table class="table table-bordered table-condensed table-striped">
                                                         <tbody>
                                                             <tr>
                                                                 <th style="width: 10px">#</th>
@@ -339,66 +355,120 @@
                                 <div class="form-group">
                                     <label for="inputName" class="col-sm-2 control-label">Nome</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputName" placeholder="Nome">
+                                        <input type="text" class="form-control" id="inputName" placeholder="Nome" ng-model="Perfil.nome">
+                                        {{Perfil.nome}}
 
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputEmail" class="col-sm-2 control-label">Email</label>
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                                        <input type="email" class="form-control" id="inputEmail" placeholder="Email" ng-model="Perfil.email">
+                                        {{Perfil.email}}
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName" class="col-sm-2 control-label">Telefones</label>
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" id="inputName" placeholder="Celular">
+                                        <input type="text" class="form-control" id="inputName" placeholder="Celular" ng-model="Perfil.celular">
+                                        {{Perfil.celular}}
                                     </div>
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" id="inputName" placeholder="Residencial">
+                                        <input type="text" class="form-control" id="inputName" placeholder="Residencial" ng-model="Perfil.residencial">
+                                        {{Perfil.residencial}}
                                     </div>
                                 </div>
                                 <div class="form-group">
 
                                     <label class="col-sm-2 control-label">Endereço</label>
                                     <div class="col-sm-3">
-                                        <input type="text" class="form-control" name="txtCEP" required ng-minlength="9" placeholder="CEP" ng-model="cep">
+                                        <input type="text" class="form-control" name="txtCEP" required ng-minlength="9" placeholder="CEP" ng-model="Perfil.cep">
+                                        {{Perfil.cep}}
                                     </div>
-
-                                    <!-- <div class="col-sm-4">
-                                        <button ng-click="buscarEndereco(cep)" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                                        </button>
-                                        <span class="spinner"><i class="fa fa-refresh fa-spin"></i> Aguarde...</span>
-                                    </div> -->
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-6">
-                                        <input type="text" class="form-control" name="txtLogradouro" placeholder="Logradouro" ng-model="pedido.cliente.logradouro" value="{{endereco.logradouro}}">
+                                        <input type="text" class="form-control" name="txtLogradouro" placeholder="Logradouro" ng-model="Perfil.logradouro" value="{{endereco.logradouro}}">
+                                        {{Perfil.logradouro}}
                                     </div>
                                     <div class="col-sm-2">
-                                        <input type="number" class="form-control" name="txtNumero" placeholder="Nº" ng-model="pedido.cliente.numero" required>
+                                        <input type="number" class="form-control" name="txtNumero" placeholder="Nº" ng-model="Perfil.numero" required>
+                                        {{Perfil.numero}}
                                     </div>
                                     <div class="col-sm-2">
-                                        <input type="text" class="form-control" name="txtComplemento" placeholder="Complemento" ng-model="pedido.cliente.complemento" required>
+                                        <input type="text" class="form-control" name="txtComplemento" placeholder="Complemento" ng-model="Perfil.complemento" required>
+                                        {{Perfil.complemento}}
                                     </div>
                                 </div>
                                 <div class="form-group">
 
 
                                     <div class="col-sm-offset-2 col-sm-4">
-                                        <input type="text" class="form-control" name="txtBairro" placeholder="Bairro" ng-model="pedido.cliente.bairro" value="{{endereco.bairro}}">
+                                        <input type="text" class="form-control" name="txtBairro" placeholder="Bairro" ng-model="Perfil.bairro">
+                                        {{Perfil.bairro}}
                                     </div>
 
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" name="txtCidade" placeholder="Cidade" ng-model="pedido.cliente.cidade" value="{{endereco.cidade}}">
+                                        <input type="text" class="form-control" name="txtCidade" placeholder="Cidade" ng-model="Perfil.cidade">
+                                        {{Perfil.cidade}}
                                     </div>
                                     <div class="col-sm-2">
-                                        <input type="text" class="form-control" name="txtUF" placeholder="UF" ng-model="pedido.cliente.uf" value="{{endereco.uf}}">
+                                          <input type="text" class="form-control" name="txtUF" placeholder="UF" ng-model="Perfil.uf">
+                                          {{Perfil.uf}}
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-primary">Salvar</button>
+                                        <button type="submit" class="btn btn-primary" ng-click="cadastrarPerfil(Perfil)">Salvar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                      <!-- Endereçamento -->
+                      <div class="tab-pane" id="enderecos">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Endereço 1</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="txtCEP" required ng-minlength="9" placeholder="CEP" ng-model="Perfil.cep">
+                                        {{Perfil.cep}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-6">
+                                        <input type="text" class="form-control" name="txtLogradouro" placeholder="Logradouro" ng-model="Perfil.logradouro" value="{{endereco.logradouro}}">
+                                        {{Perfil.logradouro}}
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" name="txtNumero" placeholder="Nº" ng-model="Perfil.numero" required>
+                                        {{Perfil.numero}}
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" name="txtComplemento" placeholder="Complemento" ng-model="Perfil.complemento" required>
+                                        {{Perfil.complemento}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+
+
+                                    <div class="col-sm-offset-2 col-sm-4">
+                                        <input type="text" class="form-control" name="txtBairro" placeholder="Bairro" ng-model="Perfil.bairro">
+                                        {{Perfil.bairro}}
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="txtCidade" placeholder="Cidade" ng-model="Perfil.cidade">
+                                        {{Perfil.cidade}}
+                                    </div>
+                                    <div class="col-sm-2">
+                                          <input type="text" class="form-control" name="txtUF" placeholder="UF" ng-model="Perfil.uf">
+                                          {{Perfil.uf}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" class="btn btn-primary" ng-click="cadastrarPerfil(Perfil)">Salvar</button>
                                     </div>
                                 </div>
                             </form>

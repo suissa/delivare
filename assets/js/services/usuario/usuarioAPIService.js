@@ -23,6 +23,7 @@ angular.module("Delivare").factory('usuariosAPI', function($http, config){
 			return $http.post('http://backend.apps.delivare.com.br/api/usuarios/inserirUsuario', data, config);
 }
 
+
 	var _postLogarUsuario = function(Login){
 			var data = Login;
 

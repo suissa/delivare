@@ -3,3 +3,29 @@
     <div style="width:150px;" class="input-group" min="minRating" max="maxRating" ng-model="item_qnt" rn-stepper ng-change="updateQnt(item_qnt);"></div>
   </div>
 </div>
+
+
+
+$scope.entrar = function(Login){
+    usuariosAPI.postLogarUsuario(Login).success(function(data){
+          // const dados = $localStorage.$default({
+          //    nome: data.nome,
+          //    email: data.email,
+          //    celular: data.celular
+          //  });
+
+          window.localStorage.setItem("logado", true);
+          window.localStorage.setItem("nome", data.nome);
+          window.localStorage.setItem("email", data.email);
+          window.localStorage.setItem("celular", data.celular);
+
+          $scope.nomeUsuario = localStorage.getItem('nome');
+          $scope.emailUsuario = localStorage.getItem('email');
+          $scope.celularUsuario = localStorage.getItem('celular');
+          $scope.logado = window.localStorage.getItem('logado');
+          $rootScope.usuario = dados;
+
+    }).error(function(data, status, header, config){
+
+    })
+  }

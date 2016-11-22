@@ -50,6 +50,23 @@
         padding: 1.4rem;
         font-size: 2rem;
       }
+
+      .textarea-comentario{
+        width:100%;
+      }
+
+      .ratestar .stars .star {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        background: url('./app/dist/img/star-select.png')no-repeat;
+        margin-right: 3px;
+        cursor: pointer;
+      }
+
+      .ratestar .stars .star.selected {
+      	background: url('./app/dist/img/star-selected.png')no-repeat;
+      }
     </style>
 </head>
 
@@ -70,19 +87,18 @@
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
                       <li class="dropdown messages-menu">
-                        <a href="javascript::;" class="dropdown-toggle" data-toggle="dropdown" ng-show="listaProduto > 0">
+                        <!-- Menu toggle button -->
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                           <i class="fa fa-shopping-cart"></i>
-                          {{updateQnt.item_qnt}}
-                          <span class="label label-success">{{carrinho.precoUnitario | currency:"R$ "}}</span> {{carrinho.nome}}
+                          <span class="label label-success">{{2.90 | currency:"R$ "}}</span> nome do mercado
                         </a>
-
                         <ul class="dropdown-menu">
                           <li>
                             <div class="small-box bg-aqua no-margin">
                               <div class="inner">
-                                <strong>{{mercado.nome}} {{mercado.localizacao}}</strong>
-                                <br> {{mercado.quantidade}} produto<span ng-show="mercado.quantidade > 1">s</span>
-                                <h4><strong>Total {{mercado.total | currency:"R$ "}}</strong></h4>
+                                <strong>nome do mercado - localização</strong>
+                                <br> 20 produto<span ng-show="">s</span>
+                                <h4><strong>Total 20.00 | currency:"R$ "}}</strong></h4>
                               </div>
                               <div class="icon">
                                 <i class="fa fa-shopping-cart"></i>
@@ -91,7 +107,7 @@
                             </div>
                           </li>
                         </ul>
-                        </li>
+                      </li>
 
                         <li class="dropdown-toggle bg-red" ng-show="logado">
                             <a href="index.html#/" data-toggle="dropdown" ng-click="deslogar()">
@@ -325,7 +341,7 @@
     <script src="./assets/js/config/interceptorConfig.js"></script>
     <script src="./assets/js/interceptor/errorInterceptor.js"></script>
     <script src="./assets/js/interceptor/loadingInterceptor.js"></script>
-    <script src="./assets/js/interceptor/auth-Interceptor.js"></script>
+    <script src="./assets/js/interceptor/auth-interceptor.js"></script>
 
     <!-- Serviços -->
     <script src="./assets/js/services/produtos/produtosAPIService.js"></script>
@@ -345,6 +361,49 @@
     <script type="text/javascript">
     $(window).load(function () {
       $('#carregando').hide();
+      //Cria as estrelinhas de avaliação
+  			//Seleciona os containers
+  			$('.quest .container-avaliacao[data-element]').each(function(index, item){
+  			  //Recupera o seletor do input relacionado e os elementos
+  			  var selector = $(item).data('element'),
+  			      stars_element = $('<div class="stars"></div>'),
+  			      select = $(selector),
+  			      options = select.find('option'),
+  			      selected = select.find('option:selected');
+
+
+  			  //Percorre as opções do seletor
+  			  options.each(function(option_index, option){
+  			    //Adiciona uma Estrela para cada opção
+  			    var star = $('<div data-value="'+$(this).val()+'" class="star"></div>');
+  			    stars_element.append(star);
+
+  			    //Ao clicar na Estrela
+  			    star.on('click', function(){
+  			      //Recupera o valor clicado
+  			      var val = $(this).data('value');
+
+  			      //Remove a selecao atual do select e adiciona o da estrela clicada
+  			      select.find('option').attr('selected', false);
+  			      select.find('option[value="'+val+'"]').attr('selected', true);
+
+  			      //Remove as classes de seleção da Estrela
+  			      $(stars_element).find('.star').removeClass('selected');
+  			      var index = $(this).index(),
+  			          elements = $(stars_element).find('.star');
+
+  			      //Adiciona a seleção á estrela correspondente e as anteriores á estrelinhas
+  			      for(var i = 0; i <= index; i++){
+  			        $(stars_element).find('.star:nth-child('+(i+1)+')').addClass('selected');
+  			      }
+  			    });
+  			  });
+
+  			  //Adiciona o elemento novo e remove o antigo(select)
+  			  select.after(stars_element);
+  			  select.hide();
+  			});
+
     });
     </script>
 </body>

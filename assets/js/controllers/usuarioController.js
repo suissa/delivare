@@ -1,7 +1,7 @@
-app.controller("UsuarioController", function($http, usuariosAPI, $scope, carrinhoDeCompras, $location, $localStorage, $rootScope){
+app.controller("UsuarioController", function($http, usuariosAPI, $scope, carrinhoDeCompras, $location, $localStorage, $rootScope, $window){
 /* Parte de controller que cuida da parte de login e registros de usuário! */
 $scope.logado = window.localStorage.logado;
-  $scope.cadastrar = function(Cadastro){
+$scope.cadastrar = function(Cadastro){
 
     usuariosAPI.postInserirUsuario(Cadastro)
         .success(function(data, status, headers, config){
@@ -16,16 +16,15 @@ $scope.logado = window.localStorage.logado;
 
 $scope.entrar = function(Login){
     usuariosAPI.postLogarUsuario(Login).success(function(data){
-          const dados = $localStorage.$default({
-             nome: data.nome,
-             email: data.email,
-             celular: data.celular
-           });
 
-          window.localStorage.setItem("logado", true);
-          console.log(data);
-          $scope.logado = window.localStorage.logado;
-          $rootScope.usuario = dados;
+
+          $window.localStorage.setItem('logado', true);
+          $window.localStorage.perfilUsuario =  JSON.stringify(data);
+          $scope.perfilUsuario = JSON.parse($window.localStorage.perfilUsuario);
+
+          console.log("Dados obtidos depois do login: ", data);
+          console.log("Dados obtidos depois do login/usuario: ", data.cliente);
+          console.log("Dados obtidos do localStorage: ", $scope.perfilUsuario);
 
     }).error(function(data, status, header, config){
 
@@ -45,11 +44,8 @@ $scope.entrar = function(Login){
       //carrinhoDeCompras.adicionarProdutoNoCarrinho(produto);
   }
 
-/*Buscar o Endereço na pagina de cadastro do perfil*/
-$scope.buscarEndereco = function(cep){
-  $scope.mostrarAguarde = true;
-  usuariosAPI.getEnderecoCep(cep).success(function(data){
-    $scope.endereco = data;
-  });
+/*Cadastrar Usuario*/
+$scope.cadastrarPerfil = function(dados){
+  console.log(dados);
 }
 });
