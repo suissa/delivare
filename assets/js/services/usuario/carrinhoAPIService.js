@@ -7,18 +7,20 @@ app.service("carrinhoDeCompras", function(){
     }).length > 0
   }
 
-  function adicionarProdutoNoCarrinho(produtoSelecionado){
-      var vetorDeProdutosExistentes = verficarSeProdutoJaEstaNoCarrinho(produto.nome);
+  this.adicionarProdutoNoCarrinho = function (produtoSelecionado){
+    console.log('produtoSelecionado', produtoSelecionado)
+      // var vetorDeProdutosExistentes = verficarSeProdutoJaEstaNoCarrinho(produtoSelecionado.nome);
 
-      if(vetorDeProdutosExistentes.length > 0){
-          vetorDeProdutosExistentes[0].quantidade++;
-      }else {
+      // if(vetorDeProdutosExistentes.length > 0){
+      //     vetorDeProdutosExistentes[0].quantidade++;
+      // } else {
         listaDeProdutosSelecionados.push({
             quantidade: 1,
             nome: produtoSelecionado.nome,
             preco:produtoSelecionado.preco
         })
-      }
+      // }
+    return listaDeProdutosSelecionados
    }
 
 })

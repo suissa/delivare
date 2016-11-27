@@ -39,11 +39,11 @@ angular.module("Delivare").directive('rnStepper', function() {
             ngModelController.$parsers.push(function(value) {
                 return parseInt(value, 10);
             });
-            scope.$watch(function () {
-                return ngModelController.$modelValue;
-            }, function(newValue,oldval) {
+            scope.$watch('ngModel', function(newValue,oldval) {
+                // console.log('watch', newValue,oldval)
                 if(newValue!==oldval){
-                    console.log("May Need to trigger ng-changes");
+                    // console.log("May Need to trigger ng-changes");
+                    // console.log('iAttrs', iAttrs, iAttrs.ngChange)
                     scope.$eval(iAttrs.ngChange);
                 }
             });
